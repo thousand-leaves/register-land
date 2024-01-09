@@ -1,0 +1,152 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Check your answers template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      <h1 class="govuk-heading-xl">
+        Check your answers before sending your application
+      </h1>
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "What is the broad habitat?"
+            },
+            value: {
+              text: data['broad-habitat']
+            },
+            actions: {
+              items: [
+                {
+                  href: "/broad-habitat",
+                  text: "Change",
+                  visuallyHiddenText: "What is the broad habitat?"
+                }
+              ]
+            }
+          }
+          ,
+          {
+            key: {
+              text: "What is the habitat type?"
+            },
+            value: {
+              text: data['habitat-type']
+            },
+            actions: {
+              items: [
+                {
+                  href: "/habitat-type",
+                  text: "Change",
+                  visuallyHiddenText: "What is the habitat type?"
+                }
+              ]
+            }
+          }
+          ,
+          {
+            key: {
+              text: "What is the area (hectares) of the habitat?"
+            },
+            value: {
+              text: data['area']
+            },
+            actions: {
+              items: [
+                {
+                  href: "/area",
+                  text: "Change",
+                  visuallyHiddenText: "What is the area of the habitat?"
+                }
+              ]
+            }
+          }
+          ,
+          {
+            key: {
+              text: "How would you describe the distinctiveness of the habitat?"
+            },
+            value: {
+              text: data['distinctiveness']
+            },
+            actions: {
+              items: [
+                {
+                  href: "/distinctiveness",
+                  text: "Change",
+                  visuallyHiddenText: "What is the distinctiveness of the habitat?"
+                }
+              ]
+            }
+          }
+          ,
+          {
+            key: {
+              text: "How would you describe the condition of the habitat?"
+            },
+            value: {
+              text: data['condition']
+            },
+            actions: {
+              items: [
+                {
+                  href: "/condition",
+                  text: "Change",
+                  visuallyHiddenText: "How would you describe the condition of the habitat?"
+                }
+              ]
+            }
+          }
+          ,
+          {
+            key: {
+              text: " How would you describe the strategic significance of the habitat?"
+            },
+            value: {
+              text: data['strategic-significance']
+            },
+            actions: {
+              items: [
+                {
+                  href: "/strategic-significance",
+                  text: "Change",
+                  visuallyHiddenText: "How would you describe the strategic significance of the habitat?"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-m">
+        Now send your application
+      </h2>
+
+      <p>
+        By submitting this application you are confirming that, to the best of your knowledge, the details you are providing are correct.
+      </p>
+
+      <form action="/confirmation" method="post" novalidate>
+
+        {{ govukButton({
+          text: "Accept and send"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+{% endblock %}
